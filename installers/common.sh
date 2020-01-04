@@ -110,7 +110,7 @@ function change_file_ownership() {
 function display_lokiaddress (){
         IP="10.0.0.1"
         snapp_address=$(nslookup $IP | sed -n 's/.*arpa.*name = \(.*\)/\1/p')
-        echo -e "Your Lokinet Address is:\n${snapp_address}"
+        echo -e "Your Lokinet Address is:\nhttp://${snapp_address}"
 }
 
 function install_complete() {
@@ -126,7 +126,7 @@ function install_complete() {
     fi
     install_log "SNApp Launching"
     echo -n "SNApp Launching"
-    ln -s /home/$username/snapp/index.html /tmp/
+    ln -s /home/$username/snapp/index.html /root/
     sudo $snapp_dir/snapp.sh
     exit 0 || install_error "Unable to exit"
 }
