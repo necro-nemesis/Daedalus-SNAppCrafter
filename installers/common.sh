@@ -25,12 +25,12 @@ fi
 
 # Outputs a SNApp-Pi-Host Install log line
 function install_log() {
-    echo -e "\033[1;32mLokiAP Install: $*\033[m"
+    echo -e "\033[1;32mSNApp Install: $*\033[m"
 }
 
 # Outputs a SNApp-Pi-Host Install Error log line and exits with status code 1
 function install_error() {
-    echo -e "\033[1;37;41mLokiAP Install Error: $*\033[m"
+    echo -e "\033[1;37;41mSNApp Install Error: $*\033[m"
     exit 1
 }
 
@@ -81,7 +81,6 @@ function create_webpage_directory() {
     sudo chown -R $username:$username "$snapp_dir" || install_error "Unable to change file ownership for '$snapp_dir'"
 }
 
-
 # Fetches latest files from github for basic SNapp
 
 function download_latest_files() {
@@ -126,21 +125,11 @@ function install_complete() {
 
 function install_pihost() {
     display_welcome
-    config_installation
     update_system_packages
     install_dependencies
-    stop_lokinet
-    check_for_networkmananger
-    optimize_php
-    enable_php_lighttpd
-    create_raspap_directories
-    check_for_old_configs
+    create_user
+    create_webpage_directory
     download_latest_files
     change_file_ownership
-    create_logging_scripts
-    move_config_file
-    network_tables
-    default_configuration
-    patch_system_files
     install_complete
 }
