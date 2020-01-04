@@ -106,7 +106,7 @@ function change_file_ownership() {
 
 function display_lokiaddress (){
   snapp_address=$(nslookup "10.0.0.1" | grep Add | grep -v '#' | cut -f 3 -d ' ' | awk 'NR>1' )
-  echo -n "Your your SNApp address is: ${snapp_address}"
+  echo -n "$snapp_address"
 }
 
 function install_complete() {
