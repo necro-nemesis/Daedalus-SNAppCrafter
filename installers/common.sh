@@ -89,7 +89,7 @@ function download_latest_files() {
     fi
 
     install_log "Cloning latest files from github"
-    git clone --depth 1 https://github.com/necro-nemesis/SNapp-Pi-Host /home/$username/SNApp || install_error "Unable to download files from github"
+    git clone --depth 1 https://github.com/necro-nemesis/SNapp-Pi-Host $snapp_dir || install_error "Unable to download files from github"
 }
 
 # Sets files ownership in SNapp directory
