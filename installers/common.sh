@@ -105,8 +105,14 @@ function change_file_ownership() {
 }
 
 function display_lokiaddress (){
-  snapp_address=nslookup "10.0.0.1"
-  echo -n "$snapp_address"
+        ip="10.0.0.1"
+  while read IP ; do
+        snapp_address=$(nslookup $IP | sed -n 's/.*arpa.*name = \(.*\)/\1/p')
+        test -z "$snapp_address" && snapp_address="Failed"
+
+        echo -e "$IP\t$snapp_address"
+
+done < ips.txt
 }
 
 function install_complete() {
