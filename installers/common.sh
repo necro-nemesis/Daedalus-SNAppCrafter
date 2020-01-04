@@ -110,7 +110,7 @@ function change_file_ownership() {
 function display_lokiaddress (){
         IP="10.0.0.1"
         snapp_address=$(nslookup $IP | sed -n 's/.*arpa.*name = \(.*\)/\1/p')
-        echo -e "Your Lokinet Address is\t${snapp_address}"
+        echo -e "Your Lokinet Address is:\n${snapp_address}"
 }
 
 function install_complete() {
@@ -133,8 +133,8 @@ function install_complete() {
 
 function install_pihost() {
     display_welcome
-    #update_system_packages
-    #install_dependencies
+    update_system_packages
+    install_dependencies
     create_user
     create_webpage_directory
     download_latest_files
