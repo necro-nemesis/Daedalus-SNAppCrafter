@@ -4,6 +4,8 @@
 
 function create_user () {
 
+install_log "Create a SNApp host user account"
+
 if [ $(id -u) -eq 0 ]; then
 	read -p "Enter username : " username
 	read -s -p "Enter password : " password
