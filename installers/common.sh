@@ -105,7 +105,7 @@ function change_file_ownership() {
 }
 
 function display_lokiaddress (){
-        ip=10.0.0.1
+        IP="10.0.0.1"
         snapp_address=$(nslookup $IP | sed -n 's/.*arpa.*name = \(.*\)/\1/p')
         echo -e "$IP\t$snapp_address"
 }
