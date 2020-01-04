@@ -115,6 +115,7 @@ function display_lokiaddress (){
 
 function install_complete() {
     sudo rm -r $snapp_dir/installers || install_error "Unable to remove installers"
+    sudo rm -r /tmp/snapp || install_error "Unable to remove /tmp/snapp folder"
     install_log "Installation completed!"
 
     echo -n "Installation complete. Do you wish to launch your SNApp? [y/N]: "
