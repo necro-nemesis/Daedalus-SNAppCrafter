@@ -95,7 +95,6 @@ function download_latest_files() {
 
     install_log "Cloning latest files from github"
     git clone --depth 1 https://github.com/necro-nemesis/SNapp-Pi-Host $snapp_dir || install_error "Unable to download files from github"
-    sudo rm -r $snapp_dir/installers
 }
 
 # Sets files ownership in SNapp directory
@@ -115,6 +114,7 @@ function display_lokiaddress (){
 }
 
 function install_complete() {
+    sudo rm -r $snapp_dir/installers || install_error "Unable to remove installers"
     install_log "Installation completed!"
 
     echo -n "Installation complete. Do you wish to launch your SNApp? [y/N]: "
