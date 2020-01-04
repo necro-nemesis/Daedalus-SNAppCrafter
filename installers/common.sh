@@ -1,4 +1,4 @@
-snapp_dir="/home/$username/SNApp"
+snapp_dir="/home/$username/snapp"
 
 #create hostname account
 
