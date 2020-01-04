@@ -1,4 +1,4 @@
-snapp_dir="/home/$username/snapp"
+
 
 #create hostname account
 
@@ -74,6 +74,8 @@ function install_dependencies() {
 # Verifies existence and permissions of RaspAP directory
 function create_webpage_directory() {
     install_log "Creating webpage directory"
+    snapp_dir="/home/$username/snapp"
+
     if [ -d "$snapp_dir" ]; then
         sudo mv $snapp_dir "$snapp_dir.`date +%F-%R`" || install_error "Unable to move old '$snapp_dir' out of the way"
     fi
