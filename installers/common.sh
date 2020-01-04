@@ -107,7 +107,7 @@ function change_file_ownership() {
 function display_lokiaddress (){
         IP="10.0.0.1"
         snapp_address=$(nslookup $IP | sed -n 's/.*arpa.*name = \(.*\)/\1/p')
-        echo -e "$IP\t$snapp_address"
+        echo -e "Your Lokinet Address is\t${snapp_address}"
 }
 
 function install_complete() {
