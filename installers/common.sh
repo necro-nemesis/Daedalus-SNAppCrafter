@@ -128,8 +128,8 @@ function install_complete() {
 
 function install_pihost() {
     display_welcome
-    update_system_packages
-    install_dependencies
+    #update_system_packages
+    #install_dependencies
     create_user
     create_webpage_directory
     download_latest_files
