@@ -126,7 +126,7 @@ function install_complete() {
     install_log "SNApp Launching"
     echo -n "SNApp Launching"
     ln -s /home/$username/snapp/index.html /tmp/
-    sudo $snapp_dir/lokipython.sh
+    sudo $snapp_dir/snapp.sh
     exit 0 || install_error "Unable to exit"
 }
 
