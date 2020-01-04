@@ -105,7 +105,7 @@ function change_file_ownership() {
 }
 
 function display_lokiaddress (){
-  snapp_address=$(nslookup "10.0.0.1" | grep Add | grep -v '#' | cut -f 3 -d ' ' | awk 'NR>1' )
+  snapp_address=nslookup "10.0.0.1"
   echo -n "$snapp_address"
 }
 
