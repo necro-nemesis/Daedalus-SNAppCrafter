@@ -123,7 +123,7 @@ function install_complete() {
     fi
     install_log "SNApp Launching"
     echo -n "SNApp Launching"
-    su $username
+    cd $snapp_dir
     sudo python3 -m http.server --bind localhost.loki 80
     sleep 8
     exit 0 || install_error "Unable to exit"
