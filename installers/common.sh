@@ -1,47 +1,47 @@
-raspap_dir="/etc/raspap"
-raspap_user="www-data"
+snapp_dir="/home/$username/SNApp"
 webroot_dir="/var/www/html"
-version=`sed 's/\..*//' /etc/debian_version`
 
-# Determine version, set default home location for lighttpd and
-# php package to install
-if [ $version -eq 10 ]; then
-    version_msg="Raspbian 10.0 (Buster)"
-    sudo apt update --allow-releaseinfo-change
-    php_package="php7.3-cgi"
-elif [ $version -eq 9 ]; then
-    version_msg="Raspbian 9.0 (Stretch)"
-    php_package="php7.0-cgi"
-elif [ $version -eq 8 ]; then
-    version_msg="Raspbian 8.0 (Jessie)"
-    php_package="php5.6-cgi"
+#create hostname account
+
+function create_user () {
+
+if [ $(id -u) -eq 0 ]; then
+	read -p "Enter username : " username
+	read -s -p "Enter password : " password
+	egrep "^$username" /etc/passwd >/dev/null
+	if [ $? -eq 0 ]; then
+		echo "$username exists!"
+		exit 1
+	else
+		pass=$(perl -e 'print crypt($ARGV[0], "password")' $password)
+		useradd -m -p $pass $username
+		[ $? -eq 0 ] && echo "User has been added to system!" || echo "Failed to add a user!"
+	fi
 else
-    version_msg="Raspbian earlier than 8.0 (Wheezy)"
-    webroot_dir="/var/www"
-    php_package="php5.6-cgi"
+	echo "Only root may add a user to the system"
+	exit 2
 fi
 
-phpcgiconf=""
-if [ "$php_package" = "php7.3-cgi" ]; then
-    phpcgiconf="/etc/php/7.3/cgi/php.ini"
-elif [ "$php_package" = "php7.0-cgi" ]; then
-    phpcgiconf="/etc/php/7.0/cgi/php.ini"
-elif [ "$php_package" = "php5.6-cgi" ]; then
-    phpcgiconf="/etc/php5/cgi/php.ini"
-fi
+}
 
-# Outputs a RaspAP Install log line
+#create host webpage directory
+
+function create_webpage () {
+
+  sudo mkdir -p "$snapp_dir" || install_error "Unable to create directory '$snapp_dir'"
+
+# Outputs a SNApp-Pi-Host Install log line
 function install_log() {
     echo -e "\033[1;32mLokiAP Install: $*\033[m"
 }
 
-# Outputs a RaspAP Install Error log line and exits with status code 1
+# Outputs a SNApp-Pi-Host Install Error log line and exits with status code 1
 function install_error() {
     echo -e "\033[1;37;41mLokiAP Install Error: $*\033[m"
     exit 1
 }
 
-# Outputs a RaspAP Warning line
+# Outputs a SNApp-Pi-Host Warning line
 function install_warning() {
     echo -e "\033[1;33mWarning: $*\033[m"
 }
@@ -66,20 +66,8 @@ function display_welcome() {
 ### NOTE: all the below functions are overloadable for system-specific installs
 ### NOTE: some of the below functions MUST be overloaded due to system-specific installs
 
-function config_installation() {
-    install_log "Configure installation"
-    echo "Detected ${version_msg}"
-    echo "Install directory: ${raspap_dir}"
-    echo "Lighttpd directory: ${webroot_dir}"
-    echo -n "Complete installation with these values? [y/N]: "
-    read answer
-    if [[ $answer != "y" ]]; then
-        echo "Installation aborted."
-        exit 0
-    fi
-}
-
 # Runs a system software update to make sure we're using all fresh packages
+
 function update_system_packages() {
     # OVERLOAD THIS
     install_error "No function definition for update_system_packages"
@@ -91,25 +79,6 @@ function install_dependencies() {
     install_error "No function definition for install_dependencies"
 }
 
-function stop_lokinet(){
-    sudo systemctl stop lokinet.service
-}
-
-# Replaces NetworkManager with DHCPD
-function check_for_networkmananger() {
-    # OVERLOAD THIS
-    install_error "No function definition for install_dependencies"
-}
-
-
-# Enables PHP for lighttpd and restarts service for settings to take effect
-function enable_php_lighttpd() {
-    install_log "Enabling PHP for lighttpd"
-
-    sudo lighttpd-enable-mod fastcgi-php
-    sudo service lighttpd force-reload
-    sudo /etc/init.d/lighttpd restart || install_error "Unable to restart lighttpd"
-}
 
 # Verifies existence and permissions of RaspAP directory
 function create_raspap_directories() {
