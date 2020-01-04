@@ -112,7 +112,7 @@ function display_lokiaddress (){
 
         echo -e "$IP\t$snapp_address"
 
-done < ips.txt
+done
 }
 
 function install_complete() {
