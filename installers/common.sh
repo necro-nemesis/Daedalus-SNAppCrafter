@@ -95,7 +95,7 @@ function download_latest_files() {
 # Sets files ownership in SNapp directory
 function change_file_ownership() {
     if [ ! -d "$snapp_dir" ]; then
-        install_error "SNApp directory doesn't exist"
+        install_error "snapp directory doesn't exist"
     fi
 
     install_log "Changing file ownership in SNApp directory"
@@ -131,5 +131,6 @@ function install_pihost() {
     create_webpage_directory
     download_latest_files
     change_file_ownership
+    display_lokiaddress
     install_complete
 }
