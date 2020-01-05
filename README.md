@@ -21,6 +21,8 @@ Loki
 
 ![](https://i.imgur.com/R1cttD3.png)
 
+![](https://i.imgur.com/KDYFjEu.png)
+
 ## Contents
 
  - [Prerequisites](#prerequisites)
