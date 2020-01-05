@@ -118,7 +118,7 @@ function install_complete() {
 
 		sudo systemctl stop lokinet
 
-		sed '$ /a \
+		sed '$ /a
 		> keyfile=\/var\/lib\/lokinet\/snappkey.private' /etc/loki/lokinet.ini
 		#restart Lokinet
 
