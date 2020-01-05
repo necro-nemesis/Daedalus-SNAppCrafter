@@ -96,6 +96,14 @@ function download_latest_files() {
 
     install_log "Cloning latest files from github"
     git clone --depth 1 https://github.com/necro-nemesis/SNapp-Pi-Host $snapp_dir || install_error "Unable to download files from github"
+
+#handle changes to resolvconf giving nameserver 127.3.2.1 priority.
+		sudo systemctl stop resolvconf
+		sudo mv $snapp_dir/head /etc/resolvconf/resolv.conf.d/head || install_error "Unable to move resolvconf head file"
+		sudo rm /etc/resolv.conf
+		sudo ln -s /etc/resolvconf/run/resolv.conf /etc/resolv.conf
+		sudo resolvconf -u || install_error "Unable to update resolv.conf"
+		sudo systemctl start resolvconf
 }
 
 # Sets files ownership in SNapp directory
