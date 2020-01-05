@@ -1,7 +1,7 @@
 # SNApp-Pi-Host
 Scripted SNApp hosting on a Pi
 
-![](https://i.imgur.com/mXuacOH.jpg)
+![](https://i.imgur.com/ywSbzAz.png)
 
 # `SNApp-PI-HOST` [![Release 1.0](https://img.shields.io/badge/Release-1.0-green.svg)](https://github.com/necro-nemesis/raspap-webgui/releases)
 
@@ -88,7 +88,7 @@ SNApps are placed in the /home/$USER/snapp directory "$USER" being substituted b
 
 ## Support us
 
-LokiAP is free software, but powered by your support. If you find it beneficial or wish to contribute to inspire ongoing development your donations of any amount; be they even symbolic, are a show of approval and are greatly appreciated.
+SNApp-PI-HOST is free software, but powered by your support. If you find it beneficial or wish to contribute to inspire ongoing development your donations of any amount; be they even symbolic, are a show of approval and are greatly appreciated.
 
 Loki Donation Address:
 ```sh
