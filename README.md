@@ -19,7 +19,7 @@ Loki
 
 ![](https://i.imgur.com/dufI8PE.png)
 
-![](https://i.imgur.com/F83n7PF.jpg)
+![](https://i.imgur.com/857fzPx.png)
 
 ## Contents
 
@@ -80,7 +80,7 @@ $ wget -q https://git.io/fjeSw -O /tmp/raspap && bash /tmp/raspap
 ```
 The installer will update, locate, install and configure all the prerequisites for you. You will be prompted to create a new user account. In future this account and it's associate SNApp directory is used to run the server. Enter a username and password, the script will automatically create and elevate privileges of this account to root while generating the SNApp folder at /home/$USER/snapp.
 
-At the end of the install process you will be presented with your Lokinet address. Either by starting the test server by answer "Y" or exiting the script "N" it will allow you to highlight the address and copy/paste this to clipboard or plug it directly into your browser to test your server. Remember to have Lokinet running on the computer you are using to test the site. Lokinet only privately and anonymously speaks to Lokinet.
+At the end of the install process you will be presented with your Lokinet address. Either by starting the test server by answer "Y" or exiting the script "N" it will allow you to highlight the address and copy/paste this to clipboard or plug it directly into your browser to test your server. Remember to have Lokinet running on the computer you are using to test the site. Lokinet privately and anonymously only communicates with Lokinet.
 
 ## Creating your unique Webserver (SNApp)
 
