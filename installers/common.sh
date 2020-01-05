@@ -116,11 +116,13 @@ function display_lokiaddress (){
 function install_complete() {
 		#append /var/lib/lokinet/lokinet.ini
 
+		sudo systemctl stop lokinet
+
 		sed '$ /a \
 		> keyfile=/var/lib/lokinet/snappkey.private' /etc/loki/lokinet.ini
 		#restart Lokinet
 
-		sudo systemctl restart lokinet
+		sudo systemctl start lokinet
 
 		#clean out installer files
 
