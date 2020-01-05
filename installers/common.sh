@@ -129,6 +129,9 @@ function install_complete() {
     sudo rm -r /tmp/snapp || install_error "Unable to remove /tmp/snapp folder"
 
 		install_log "Installation completed!"
+		IP="10.0.0.1"
+		snapp_address=$(nslookup $IP | sed -n 's/.*arpa.*name = \(.*\)/\1/p')
+		echo -e "Your Lokinet Address is:\nhttp://${snapp_address}"
 
     echo -n "Installation complete. Do you wish to launch your SNApp? [y/N]: "
     read answer
@@ -151,6 +154,6 @@ function install_pihost() {
     create_webpage_directory
     download_latest_files
     change_file_ownership
-    display_lokiaddress
+    #display_lokiaddress
     install_complete
 }
