@@ -1,7 +1,6 @@
 
 
-#create hostname account
-
+#create hostname account with root privelages.
 function create_user () {
 
 install_log "Create a SNApp host user account"
@@ -59,7 +58,6 @@ function display_welcome() {
 
 ### NOTE: all the below functions are overloadable for system-specific installs
 ### NOTE: some of the below functions MUST be overloaded due to system-specific installs
-
 # Runs a system software update to make sure we're using all fresh packages
 
 function update_system_packages() {
@@ -73,8 +71,7 @@ function install_dependencies() {
     install_error "No function definition for install_dependencies"
 }
 
-
-# Verifies existence and permissions of RaspAP directory
+# Verifies existence and permissions of snapp directory
 function create_webpage_directory() {
     install_log "Creating webpage directory"
     snapp_dir="/home/$username/snapp"
@@ -87,7 +84,6 @@ function create_webpage_directory() {
 }
 
 # Fetches latest files from github for basic SNapp
-
 function download_latest_files() {
     if [ -d "$snapp_dir" ]; then
         sudo mv $snapp_dir "$snapp_dir.`date +%F-%R`" || install_error "Unable to remove old snap directory"
@@ -107,40 +103,30 @@ function change_file_ownership() {
     sudo chown -R $username:$username "$snapp_dir" || install_error "Unable to change file ownership for 'snapp_dir'"
 }
 
-function display_lokiaddress (){
-        IP="10.0.0.1"
-        snapp_address=$(nslookup $IP | sed -n 's/.*arpa.*name = \(.*\)/\1/p')
-        echo -e "Your Lokinet Address is:\nhttp://${snapp_address}"
-}
-
 function install_complete() {
+
 		#append /var/lib/lokinet/lokinet.ini
-
 		sudo systemctl stop lokinet
-
 		sed -i '$ i\ keyfile=/var/lib/lokinet/snappkey.private' /var/lib/lokinet/lokinet.ini
-		#restart Lokinet
-
 		sudo systemctl start lokinet
 
 		#clean out installer files
-
 		sudo rm -r $snapp_dir/installers || install_error "Unable to remove installers"
     sudo rm -r /tmp/snapp || install_error "Unable to remove /tmp/snapp folder"
 
+		#provide option to launch and display lokinet address
 		install_log "Installation completed!"
 		IP="10.0.0.1"
 		snapp_address=$(nslookup $IP | sed -n 's/.*arpa.*name = \(.*\)/\1/p')
 		echo -e "Your Lokinet Address is:\nhttp://${snapp_address}"
 
-    echo -n "Installation complete. Do you wish to launch your SNApp? [y/N]: "
+    echo -n "Prepared to go live. Do you wish to launch your server? [y/N]: "
     read answer
     if [[ $answer != "y" ]]; then
-        echo "SNApp not launched. Exiting installation"
+        echo "Server not launched. Exiting installation"
         exit 0
     fi
-    install_log "SNApp Launching"
-    echo -n "SNApp Launching"
+    install_log "Server Launching"
     sed -i "s|/home/pi/snapp|/home/$username/snapp|g" /home/$username/snapp/snapp.sh
     sudo screen -S snapp -d -m python3 -m http.server --bind localhost.loki 80 --directory $snapp_dir
     exit 0 || install_error "Unable to exit"
@@ -154,6 +140,5 @@ function install_pihost() {
     create_webpage_directory
     download_latest_files
     change_file_ownership
-    #display_lokiaddress
     install_complete
 }
