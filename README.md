@@ -1,4 +1,4 @@
-# SNApp-Pi-Host
+# SNApp-PI-HOST
 Scripted SNApp hosting on a Pi
 
 ![](https://i.imgur.com/ywSbzAz.png)
@@ -17,7 +17,7 @@ Loki
 
 ![](https://i.imgur.com/fxKF4bi.jpg)
 
-![](https://i.imgur.com/rLxGmZd.png)
+![](https://i.imgur.com/dufI8PE.png)
 
 ![](https://i.imgur.com/F83n7PF.jpg)
 
