@@ -114,6 +114,7 @@ function change_file_ownership() {
 
     install_log "Changing file ownership in SNApp directory"
     sudo chown -R $username:$username "$snapp_dir" || install_error "Unable to change file ownership for 'snapp_dir'"
+		sudo chmod -R 0755 "$snapp_dir" || install_error "Unable to change permissions for 'snapp_dir'"
 }
 
 function install_complete() {
