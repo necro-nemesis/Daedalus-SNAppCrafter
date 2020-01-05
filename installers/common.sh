@@ -117,7 +117,7 @@ function install_complete() {
 		#append /var/lib/lokinet/lokinet.ini
 
 		sed '/[network]/a \
-		> keyfile=/var/lib/lokinet/snappkey.private' /var/lib/lokinet/lokinet.ini
+		> keyfile=/var/lib/lokinet/snappkey.private' /etc/loki/lokinet.ini
 		#restart Lokinet
 
 		sudo systemctl restart lokinet
