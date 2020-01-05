@@ -3,7 +3,7 @@ Scripted SNApp hosting on a Pi
 
 ![](https://i.imgur.com/ywSbzAz.png)
 
-# `SNApp-PI-HOST` [![Release 1.1](https://img.shields.io/badge/Release-1.0-green.svg)](https://github.com/necro-nemesis/raspap-webgui/releases)
+# `SNApp-PI-HOST` [![Release 1.1](https://img.shields.io/badge/Release-1.1-green.svg)](https://github.com/necro-nemesis/raspap-webgui/releases)
 
 Loki SNApp-PI-HOST is an easy to use Lokinet webserver set up tool to rapidly configure a hidden service (SNApp) on a Raspberry Pi or Orange Pi. After installing a fresh image, running the script and entering your own user during the installation the device is ready to launch your website providing you with your individual Loki address.
 
