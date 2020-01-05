@@ -71,6 +71,11 @@ function install_dependencies() {
     install_error "No function definition for install_dependencies"
 }
 
+# Halts lokinet to allow for modifications to it
+function stop_lokinet(){
+    sudo systemctl stop lokinet.service
+}
+
 # Verifies existence and permissions of snapp directory
 function create_webpage_directory() {
     install_log "Creating webpage directory"
@@ -106,8 +111,7 @@ function change_file_ownership() {
 function install_complete() {
 
 		#append /var/lib/lokinet/lokinet.ini
-		sudo systemctl stop lokinet
-		sed -i '$ i\ keyfile=/var/lib/lokinet/snappkey.private' /var/lib/lokinet/lokinet.ini
+		sed -i '$ i\keyfile=/var/lib/lokinet/snappkey.private' /var/lib/lokinet/lokinet.ini
 		sudo systemctl start lokinet
 
 		#clean out installer files
@@ -136,6 +140,8 @@ function install_pihost() {
     display_welcome
     update_system_packages
     install_dependencies
+		stop_lokinet
+    check_for_networkmananger
     create_user
     create_webpage_directory
     download_latest_files

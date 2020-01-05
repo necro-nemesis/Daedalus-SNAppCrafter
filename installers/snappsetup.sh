@@ -17,4 +17,17 @@ function install_dependencies() {
     sudo yes | apt-get install git screen dnsutils resolvconf lokinet || install_error "Unable to install dependencies"
 }
 
+#Remove NetworkManager and install dhcpd if required.
+
+function check_for_networkmananger() {
+  install_log "Checking for NetworkManager"
+  echo "Checking for Network Manager"
+    if [ -f /lib/systemd/system/network-manager.service ]; then
+  echo "Network Manager found. Replacing with DHCPCD"
+        sudo apt-get -y purge network-manager
+        sudo apt-get -y install dhcpcd5
+    fi
+
+}
+
 install_pihost
