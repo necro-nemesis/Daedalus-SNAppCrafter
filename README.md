@@ -19,7 +19,7 @@ Loki
 
 ![](https://i.imgur.com/dufI8PE.png)
 
-![](https://i.imgur.com/857fzPx.png)
+![](https://i.imgur.com/R1cttD3.png)
 
 ## Contents
 
