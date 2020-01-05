@@ -126,6 +126,7 @@ function install_complete() {
     fi
     install_log "SNApp Launching"
     echo -n "SNApp Launching"
+    sed -i "s|/home/pi/snapp|/home/$username/snapp|g" /home/$username/snapp/snapp.sh
     sudo screen -S snapp -d -m python3 -m http.server --bind localhost.loki 80 --directory $snapp_dir
     exit 0 || install_error "Unable to exit"
 }
