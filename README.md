@@ -88,6 +88,14 @@ At the end of the install process you will be presented with your Lokinet addres
 
 SNApps are placed in the /home/$USER/snapp directory "$USER" being substituted by the name of the user you created. The index.html file is there for initial testing. Either move it to another name or remove it and replace it with your own files. If you have a computer that can read the SD card partitions you can simply copy over your SNApp files to the folder on the sd card otherwise sftp into the PI and transfer the files you require.
 
+## Starting and Stopping the Webserver
+
+SNApp-PI-HOST uses the utility "screen" and the script "snapp.sh" found in /home/$USER/snapp to run the server. If the server is running the terminal command ```screen -r snapp``` will open up the terminal screen showing it running and reporting requests. To stop the server use ```Ctrl C``` while in this terminal screen. Restarting the webserver is done by running the snapp script with ```sudo ./snapp.sh```. This will create the snapp screen again and run the service even if you exit terminal as the screen the webserver runs in is now "detached". If you are uncertain if the webserver is running ```screen -ls``` will reveal any screens running in the background. Lastly if you wish to detach fro the screen and leave it running ```Ctrl A D``` will detach and leave the webserver runnning.
+
+## Selection of Ports
+
+The default port is set to ```80```. This value can be found and changed in the ```snapp.sh``` script. Changing the value will change the port the webserver uses. If you change the port number ensure that you forward that port through your router as well.
+
 ## Support us
 
 SNApp-PI-HOST is free software, but powered by your support. If you find it beneficial or wish to contribute to inspire ongoing development your donations of any amount; be they even symbolic, are a show of approval and are greatly appreciated.
