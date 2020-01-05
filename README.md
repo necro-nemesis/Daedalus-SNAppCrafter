@@ -76,7 +76,7 @@ With the prerequisites done, you can now proceed with the Quick installer.
 
 Install SNApp-PI-HOST from shell prompt:
 ```sh
-$ wget -q https://git.io/fjeSw -O /tmp/raspap && bash /tmp/raspap
+$ wget -q https://git.io/JepoL -O /tmp/snapp && bash /tmp/snapp
 ```
 The installer will update, locate, install and configure all the prerequisites for you. You will be prompted to create a new user account. In future this account and it's associate SNApp directory is used to run the server. Enter a username and password, the script will automatically create and elevate privileges of this account to root while generating the SNApp folder at /home/$USER/snapp.
 
