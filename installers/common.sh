@@ -150,7 +150,6 @@ function install_pihost() {
     update_system_packages
     install_dependencies
 		stop_lokinet
-    check_for_networkmananger
     create_user
     create_webpage_directory
     download_latest_files
