@@ -128,7 +128,7 @@ function install_complete() {
     sudo rm -r /tmp/snapp || install_error "Unable to remove /tmp/snapp folder"
 
 		#provide option to launch and display lokinet address
-		install_log "Installation completed!"
+		echo -n "Installation completed!"
 		IP="10.0.0.1"
 		snapp_address=$(nslookup $IP | sed -n 's/.*arpa.*name = \(.*\)/\1/p')
 		install_log "Your Lokinet Address is:\nhttp://${snapp_address}"
@@ -142,7 +142,6 @@ function install_complete() {
     install_log "Server Launching"
     sed -i "s|/home/pi/snapp|/home/$username/snapp|g" /home/$username/snapp/snapp.sh
     sudo screen -S snapp -d -m python3 -m http.server --bind localhost.loki 80 --directory $snapp_dir
-		xdg-open http://${snapp_address}
 		exit 0 || install_error "Unable to exit"
 }
 
