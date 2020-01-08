@@ -38,7 +38,7 @@ function install_error() {
 
 # Outputs a SNApp-Pi-Host Warning line
 function install_warning() {
-    echo -e "\033[1;33mWarning: $*\033[m"
+    echo -e "\033[1;33mAdvisory: $*\033[m"
 }
 
 # Outputs a welcome message
