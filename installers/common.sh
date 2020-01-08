@@ -128,11 +128,11 @@ function install_complete() {
     sudo rm -r /tmp/snapp || install_error "Unable to remove /tmp/snapp folder"
 
 		#provide option to launch and display lokinet address
-		echo -n "Installation completed!"
+		install_log "Installation completed!"
 		IP="10.0.0.1"
 		snapp_address=$(nslookup $IP | sed -n 's/.*arpa.*name = \(.*\)/\1/p')
-		install_log "Your Lokinet Address is:\nhttp://${snapp_address}"
-		install_log "Place your snapp in ${snapp_dir}"
+		install_warning "Your Lokinet Address is:\nhttp://${snapp_address}"
+		install_warning "Place your snapp in ${snapp_dir}"
     echo -n "Do you wish to go live with test snapp? [y/N]: "
     read answer
     if [[ $answer != "y" ]]; then
