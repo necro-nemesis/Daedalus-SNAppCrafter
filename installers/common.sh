@@ -120,7 +120,7 @@ function change_file_ownership() {
 function install_complete() {
 
 		#append /var/lib/lokinet/lokinet.ini
-		sed -i '$ i\keyfile=/var/lib/lokinet/snappkey.private' /var/lib/lokinet/lokinet.ini
+		grep -qxF 'include "keyfile=/var/lib/lokinet/snappkey.private"' /var/lib/lokinet/lokinet.ini || sed -i '$ i\keyfile=/var/lib/lokinet/snappkey.private' /var/lib/lokinet/lokinet.ini
 		sudo systemctl start lokinet
 
 		#clean out installer files
