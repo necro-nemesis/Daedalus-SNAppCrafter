@@ -131,9 +131,9 @@ function install_complete() {
 		install_log "Installation completed!"
 		IP="10.0.0.1"
 		snapp_address=$(nslookup $IP | sed -n 's/.*arpa.*name = \(.*\)/\1/p')
-		echo -e "Your Lokinet Address is:\nhttp://${snapp_address}"
-
-    echo -n "Prepared to go live. Do you wish to launch your server? [y/N]: "
+		install_log "Your Lokinet Address is:\nhttp://${snapp_address}"
+		install_log "Place your snapp in ${snapp_dir}"
+    echo -n "Do you wish to go live with test snapp? [y/N]: "
     read answer
     if [[ $answer != "y" ]]; then
         echo "Server not launched. Exiting installation"
@@ -142,7 +142,8 @@ function install_complete() {
     install_log "Server Launching"
     sed -i "s|/home/pi/snapp|/home/$username/snapp|g" /home/$username/snapp/snapp.sh
     sudo screen -S snapp -d -m python3 -m http.server --bind localhost.loki 80 --directory $snapp_dir
-    exit 0 || install_error "Unable to exit"
+		xdg-open http://${snapp_address}
+		exit 0 || install_error "Unable to exit"
 }
 
 function install_pihost() {
