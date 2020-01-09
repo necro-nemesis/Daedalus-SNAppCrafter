@@ -94,7 +94,7 @@ Login and run all server commands as root. SNApp-PI-HOST uses the utility "scree
 
 ## Selection of Ports
 
-The default port is set to ```80```. This value can be found and changed in the ```snapp``` script located in the /usr/local/bin directory. Changing the value from ```80``` will change the port the webserver uses. If you change the port number ensure that you forward that port through your routers firewall as well. 80 typically will be an already open port.
+The default port is set to ```80```. This value can be found and changed by editing the ```snapp``` script located in the /usr/local/bin directory i.e. stopping the webserver then ```sudo nano snapp``` ,changing the value found there from ```80``` to one of your choosing, saving it then restarting the script. If you change the port number ensure that you forward that port through your routers firewall as well. 80 typically will be an already open port.
 
 ## Support us
 
