@@ -86,15 +86,15 @@ At the end of the install process you will be presented with your Lokinet addres
 
 ## Creating your unique Webserver (SNApp)
 
-SNApps are placed in the /home/$USER/snapp directory "$USER" being substituted by the name of the user you created. The index.html file is there for initial testing. Either move it to another name or remove it and replace it with your own files. If you have a computer that can read the SD card partitions you can simply copy over your SNApp files to the folder on the sd card otherwise sftp into the PI and transfer the files you require.
+SNApps are placed in the /home/$USER/snapp directory "$USER" being substituted by the name of the user you created. The index.html file is there for initial testing. Either move it to another name or remove it and replace it with your own files. If you have a computer that can read the SD card partitions you can simply copy over your SNApp files to the folder on the sd card otherwise sftp into the PI and transfer the files you require. As shown in the image above you can use a program like FileZilla to sftp into the pi then navigate to the directory of the SNApp on your pc and the aforementioned SNApp directory on the pi then transfer the files to the pi.
 
 ## Starting and Stopping the Webserver
 
-SNApp-PI-HOST uses the utility "screen" and the script "snapp" found in /usr/local/bin to run the server. If the server is running the terminal command ```screen -r snapp``` will open up the terminal screen showing it running and reporting requests. To stop the server use ```Ctrl C``` while in this terminal screen. Restarting the webserver is done by running the snapp script with ```snapp```. This will create the snapp screen again and run the service even if you exit terminal as the screen the webserver runs in is now "detached". If you are uncertain if the webserver is running ```screen -ls``` will reveal any screens running in the background. Lastly if you wish to detach fro the screen and leave it running ```Ctrl A D``` will detach and leave the webserver runnning.
+SNApp-PI-HOST uses the utility "screen" and the script "snapp" found in /usr/local/bin to run the server. If the server is running the terminal command ```screen -r snapp``` will open up the terminal screen showing it running and reporting requests. To stop the server use ```Ctrl C``` while in this snapp terminal screen. To starting the webserver is done by running the snapp script with ```snapp```. This will create the snapp screen again in the background and run the server even if you exit terminal as the screen the webserver is running in is now "detached". If you are uncertain if the webserver is running using ```screen -ls``` will reveal any screens running in the background. Lastly if you wish to detach from the snapp screen if you entered into it and leave it running ```Ctrl A D``` will detach and leave the webserver running. Additional information on use of screen can be found on the man page here https://linux.die.net/man/1/screen
 
 ## Selection of Ports
 
-The default port is set to ```80```. This value can be found and changed in the ```snapp``` script. Changing the value will change the port the webserver uses. If you change the port number ensure that you forward that port through your router as well.
+The default port is set to ```80```. This value can be found and changed in the ```snapp``` script located in the /usr/local/bin directory. Changing the value from ```80``` will change the port the webserver uses. If you change the port number ensure that you forward that port through your routers firewall as well. 80 typically will be an already open port.
 
 ## Support us
 
