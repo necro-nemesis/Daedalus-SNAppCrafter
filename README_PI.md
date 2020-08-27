@@ -45,4 +45,4 @@ sudo reboot
 ```
 With the prerequisites done, you can now proceed with the Quick installer.
 
-Now conitnue from [README.md#Quick installer](Quick installer section) of README.md
+Now conitnue from [Quick installer](README.md#quick-installer) section of README.md
