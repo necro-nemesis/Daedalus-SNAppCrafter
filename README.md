@@ -1,6 +1,8 @@
 # SNApp-HOST
 Easy SNApp hosting on Debian
 
+For installing on a Raspberry or similar PI see [README_PI.md](README_PI.md)
+
 ![](https://i.imgur.com/ywSbzAz.png)
 
 # `SNApp-HOST` [![Release 1.1](https://img.shields.io/badge/Release-1.1-green.svg)](https://github.com/necro-nemesis/raspap-webgui/releases)
