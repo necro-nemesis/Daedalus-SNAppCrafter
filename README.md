@@ -1,11 +1,11 @@
-# SNApp-PI-HOST
-Scripted SNApp hosting on a Pi
+# SNApp-HOST
+Easy SNApp hosting on Debian
 
 ![](https://i.imgur.com/ywSbzAz.png)
 
-# `SNApp-PI-HOST` [![Release 1.1](https://img.shields.io/badge/Release-1.1-green.svg)](https://github.com/necro-nemesis/raspap-webgui/releases)
+# `SNApp-HOST` [![Release 1.1](https://img.shields.io/badge/Release-1.1-green.svg)](https://github.com/necro-nemesis/raspap-webgui/releases)
 
-Loki SNApp-PI-HOST is an easy to use Lokinet webserver set up tool to rapidly configure a hidden service (SNApp) on a Raspberry Pi or Orange Pi. After installing a fresh image, running the script and entering your own user during the installation the device is ready to launch your website providing you with your individual Loki address.
+Loki SNApp-HOST is an easy to use Lokinet webserver set up tool to rapidly configure a hidden service (SNApp) on a Debian-based system. After running the script and entering your own user during the installation the device is ready to launch your website providing you with your individual Loki address.
 
 ### WHAT IS LOKI?
 
@@ -25,58 +25,15 @@ Loki
 
 ## Contents
 
- - [Prerequisites](#prerequisites)
  - [Quick installer](#quick-installer)
  - [Test Site](#test-site)
  - [Support us](#support-us)
  - [How to contribute](#how-to-contribute)
  - [License](#license)
 
-## Prerequisites
-Start with a clean install of [Armbian](https://www.armbian.com/) or [Raspbian](https://www.raspberrypi.org/downloads/raspbian/) (currently Buster and Stretch are verified as working). Lite versions are recommended. If using Raspbian Buster you will need to run the command ```sudo apt-get update --allow-releaseinfo-change``` then elevate to root with ```sudo su``` before running the LokiAP installer script. These additional steps are not required when using Armbian.
-
-For Orange Pi R1 use Armbian Buster found here: https://www.armbian.com/orange-pi-r1/. Recommend using "minimal" which is available for direct download at the bottom of the page or much faster download by .torrent also linked there.
-
-Specific code has been incorporated to take advantage of the OrangePi R1's second ethernet interface. The AP will provide access via ethernet in addition to wifi when using this board.
-
-For OrangePi Zero use Armbian Buster found here": https://www.armbian.com/orange-pi-zero/
-
-To burn the image to an SD card on your PC you can use Etcher:
-https://www.balena.io/etcher/
-
-## Preparing the image
-
-For Raspbian you will need to remove the SD card from the computer, reinsert it, open the boot directory up and create a new textfile file named `ssh` with no .txt file extension i.e. just `ssh` in order to remotely connect. This step is not required for Armbian.
-
-Insert the SD card into the device and power it up.
-
-## Accessing the device
-
-Obtain a copy of Putty and install it on your PC:
-https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html
-
-1.  Log into your router from your PC and find the address it assigned to the Pi.
-
-2.  Start Putty up and enter this obtained address into Putty with settings:
-
-    Host Name Address = the address obtained from router | Port `22` | connection type `SSH` | then `OPEN`
-
-    For Raspbian the default login is `root` password `raspberry`
-    For Armbian the default login is `root` password `1234`
-
-3.  Follow any first user password instructions provided once logged in.
-
-4. If you want to get the lastest updates before installing SNApp-PI-HOST:
-```
-sudo apt-get update
-sudo apt-get upgrade
-sudo reboot
-```
-With the prerequisites done, you can now proceed with the Quick installer.
-
 ## Quick installer
 
-Install SNApp-PI-HOST from shell prompt:
+Install SNApp-HOST from shell prompt:
 ```sh
 $ wget -q https://git.io/JepoL -O /tmp/snapp && bash /tmp/snapp
 ```
@@ -90,7 +47,7 @@ SNApps are placed in the /home/$USER/snapp directory "$USER" being substituted b
 
 ## Starting and Stopping the Webserver
 
-Login and run all server commands as root. SNApp-PI-HOST uses the utility "screen" and the script "snapp" found in /usr/local/bin to run the server. If the server is running the terminal command ```screen -r snapp``` will open up the terminal screen showing it running and reporting requests. To stop the server use ```Ctrl C``` while in this snapp terminal screen. Starting the webserver is done by running the snapp script with ```snapp```. This will create the snapp screen in the background and run the server. If you exit terminal at this stage the webserver remains running as it is now in "detached" mode. If you are uncertain if the webserver is running using ```screen -ls``` will reveal any screens running in the background and the one for the SNApp will be indicated by name. Lastly if you wish to detach from the snapp screen after entering into it and wish to leave it running on exit ```Ctrl A D``` will detach and leave the webserver running. Additional information on use of screen can be found on the man page here https://linux.die.net/man/1/screen. The server is not automatically set to start on boot therefore when you boot the pi you will be required to type ```snapp``` to start it. If you wish to have it start automatically every time on boot there are ways to do that through setting up a service or placing an entry in rc.local etc.
+Login and run all server commands as root. SNApp-HOST uses the utility "screen" and the script "snapp" found in /usr/local/bin to run the server. If the server is running the terminal command ```screen -r snapp``` will open up the terminal screen showing it running and reporting requests. To stop the server use ```Ctrl C``` while in this snapp terminal screen. Starting the webserver is done by running the snapp script with ```snapp```. This will create the snapp screen in the background and run the server. If you exit terminal at this stage the webserver remains running as it is now in "detached" mode. If you are uncertain if the webserver is running using ```screen -ls``` will reveal any screens running in the background and the one for the SNApp will be indicated by name. Lastly if you wish to detach from the snapp screen after entering into it and wish to leave it running on exit ```Ctrl A D``` will detach and leave the webserver running. Additional information on use of screen can be found on the man page here https://linux.die.net/man/1/screen. The server is not automatically set to start on boot therefore when you boot the pi you will be required to type ```snapp``` to start it. If you wish to have it start automatically every time on boot there are ways to do that through setting up a service or placing an entry in rc.local etc.
 
 ## Selection of Ports
 
@@ -98,7 +55,7 @@ The default port is set to ```80```. This value can be found and changed by edit
 
 ## Support us
 
-SNApp-PI-HOST is free software, but powered by your support. If you find it beneficial or wish to contribute to inspire ongoing development your donations of any amount; be they even symbolic, are a show of approval and are greatly appreciated.
+SNApp-HOST is free software, but powered by your support. If you find it beneficial or wish to contribute to inspire ongoing development your donations of any amount; be they even symbolic, are a show of approval and are greatly appreciated.
 
 Loki Donation Address:
 ```sh
