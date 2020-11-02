@@ -130,8 +130,8 @@ function install_complete() {
 
 		#provide option to launch and display lokinet address
 		install_log "Installation completed!"
-		IP="10.0.0.1"
-		snapp_address=$(nslookup $IP | sed -n 's/.*arpa.*name = \(.*\)/\1/p')
+		IP="127.3.2.1"
+		snapp_address=$(host -t cname localhost.loki $IP | sed -n 's/.*arpa.*name = \(.*\)/\1/p')
 		install_warning "Your Lokinet Address is:\nhttp://${snapp_address}"
 		install_warning "Place your snapp in ${snapp_dir}"
     echo -n "Do you wish to go live with test snapp? [y/N]: "
@@ -141,8 +141,9 @@ function install_complete() {
         exit 0
     fi
     install_log "Server Launching"
-    sed -i "s|/home/pi/snapp|/home/$username/snapp|g" /usr/local/bin/snapp
-    sudo screen -S snapp -d -m python3 -m http.server --bind localhost.loki 80 --directory $snapp_dir
+    #sed -i "s|/home/pi/snapp|/home/$username/snapp|g" /usr/local/bin/snapp
+    #sudo screen -S snapp -d -m python3 -m http.server --bind localhost.loki 80 --directory $snapp_dir
+		sudo systemctl restart nginx
 		exit 0 || install_error "Unable to exit"
 }
 
