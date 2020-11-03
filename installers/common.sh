@@ -122,7 +122,10 @@ function install_complete() {
 
 		#append /var/lib/lokinet/lokinet.ini
 		sed -i '$ i\keyfile=/var/lib/lokinet/snappkey.private' /var/lib/lokinet/lokinet.ini
-		sudo systemctl start lokinet
+		#sudo systemctl start lokinet
+
+		#set nginx host directory to snapp_dir
+		sed -i 's#/var/www/html#"$snapp_dir"#g' /etc/nginx/sites-enabled/default
 
 		#clean out installer files
 		sudo rm -r $snapp_dir/installers || install_error "Unable to remove installers"
@@ -132,6 +135,10 @@ function install_complete() {
 		install_log "Installation completed!"
 		IP="127.3.2.1"
 		snapp_address=$(host -t cname localhost.loki $IP | sed -n 's/.*arpa.*name = \(.*\)/\1/p')
+
+#		IP="127.3.2.1"
+#		snapp_address=$(nslookup $IP | sed -n 's/.*arpa.*name = \(.*\)/\1/p')
+
 		install_warning "Your Lokinet Address is:\nhttp://${snapp_address}"
 		install_warning "Place your snapp in ${snapp_dir}"
     echo -n "Do you wish to go live with test snapp? [y/N]: "
