@@ -121,11 +121,11 @@ function change_file_ownership() {
 function install_complete() {
 
 		#append /var/lib/lokinet/lokinet.ini
-		sed -i '$ i\keyfile=/var/lib/lokinet/snappkey.private' /var/lib/lokinet/lokinet.ini
-		#sudo systemctl start lokinet
+		sed -i 's#\#keyfile=#keyfile=/var/lib/lokinet/snappkey.private#g' /var/lib/lokinet/lokinet.ini
+		sudo systemctl start lokinet
 
 		#set nginx host directory to snapp_dir
-		sed -i 's#/var/www/html#"$snapp_dir"#g' /etc/nginx/sites-enabled/default
+		sed -i 's#/var/www/html#'"$snapp_dir"'#g' /etc/nginx/sites-enabled/default
 
 		#clean out installer files
 		sudo rm -r $snapp_dir/installers || install_error "Unable to remove installers"
