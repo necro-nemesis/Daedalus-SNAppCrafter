@@ -134,7 +134,7 @@ function install_complete() {
 		#provide option to launch and display lokinet address
 		install_log "Installation completed!"
 		IP="127.3.2.1"
-		snapp_address=$(host -t cname localhost.loki $IP | host -t cname localhost.loki 127.3.2.1 | awk '/alias for/ { print $6 }'
+		snapp_address=$(host -t cname localhost.loki $IP | awk '/alias for/ { print $6 }'
 
 #		IP="127.3.2.1"
 #		snapp_address=$(nslookup $IP | sed -n 's/.*arpa.*name = \(.*\)/\1/p')
