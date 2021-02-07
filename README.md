@@ -5,7 +5,7 @@ Scripted SNApp hosting on a Pi
 
 # `SNApp-PI-HOST` [![Release 1.1](https://img.shields.io/badge/Release-1.1-green.svg)](https://github.com/necro-nemesis/raspap-webgui/releases)
 
-Loki SNApp-PI-HOST is an easy to use Lokinet webserver set up tool to rapidly configure a hidden service (SNApp) on a Raspberry Pi or Orange Pi. After installing a fresh image, running the script and entering your own user during the installation the device is ready to launch your website providing you with your individual Loki address.
+Lokinet SNApp-PI-HOST is an easy to use Lokinet webserver set up tool to rapidly configure a hidden service (SNApp) on a Raspberry Pi or Orange Pi. After installing a fresh image, running the script and entering your own user during the installation the device is ready to launch your website providing you with your individual Loki address.
 
 ### WHAT IS LOKI?
 
@@ -26,18 +26,19 @@ Loki
 ## Contents
 
  - [Prerequisites](#prerequisites)
- - [Quick installer](#quick-installer)
- - [Test Site](#test-site)
+ - [Preparing the image](#preparing the image)
+ - [Accessing the device](#accessing the device)
+ - [Quick installer](#quick installer)
+ - [Creating your unique Webserver (SNApp)](creating your unique webserver (snapp))
+ - [Starting and Stopping the Webserver](starting and stopping the webserver)
  - [Support us](#support-us)
  - [How to contribute](#how-to-contribute)
  - [License](#license)
 
 ## Prerequisites
-Start with a clean install of [Armbian](https://www.armbian.com/) or [Raspbian](https://www.raspberrypi.org/downloads/raspbian/) (currently Buster and Stretch are verified as working). Lite versions are recommended. If using Raspbian Buster you will need to run the command ```sudo apt-get update --allow-releaseinfo-change``` then elevate to root with ```sudo su``` before running the LokiAP installer script. These additional steps are not required when using Armbian.
+Start with a clean install of [Armbian](https://www.armbian.com/) or [Raspbian](https://www.raspberrypi.org/downloads/raspbian/) (currently Buster and Stretch are verified as working). Lite versions are recommended. If using Raspbian Buster elevate to root with ```sudo su``` before running the LokiAP installer script. For Armbian you will start already elevated to root on login so ```sudo su``` is not required.
 
 For Orange Pi R1 use Armbian Buster found here: https://www.armbian.com/orange-pi-r1/. Recommend using "minimal" which is available for direct download at the bottom of the page or much faster download by .torrent also linked there.
-
-Specific code has been incorporated to take advantage of the OrangePi R1's second ethernet interface. The AP will provide access via ethernet in addition to wifi when using this board.
 
 For OrangePi Zero use Armbian Buster found here": https://www.armbian.com/orange-pi-zero/
 
@@ -80,7 +81,7 @@ Install SNApp-PI-HOST from shell prompt:
 ```sh
 $ wget -q https://git.io/JepoL -O /tmp/snapp && bash /tmp/snapp
 ```
-The installer will update, locate, install and configure all the prerequisites for you. You will be prompted to create a new user account. In future this account and it's associate SNApp directory is used to run the server. Enter a username and password, the script will automatically create and elevate privileges of this account to root while generating the SNApp folder at /home/$USER/snapp.
+The installer will update, locate, install and configure all the prerequisites for you. You will be prompted to create a new user account. In future this account and it's associate SNApp directory is used to hold your SNApp files that nginx serves. Enter a username and password, the script will automatically create and elevate privileges of this user account to root while generating the SNApp folder at /home/$USER/snapp.
 
 At the end of the install process you will be presented with your Lokinet address. Either by starting the test server by answer "Y" or exiting the script "N" it will allow you to highlight the address and copy/paste this to clipboard or plug it directly into your browser to test your server. Remember to have Lokinet running on the computer you are using to test the site. Lokinet privately and anonymously only communicates with Lokinet.
 
@@ -90,11 +91,11 @@ SNApps are placed in the /home/$USER/snapp directory "$USER" being substituted b
 
 ## Starting and Stopping the Webserver
 
-Login and run all server commands as root. SNApp-PI-HOST uses the utility "screen" and the script "snapp" found in /usr/local/bin to run the server. If the server is running the terminal command ```screen -r snapp``` will open up the terminal screen showing it running and reporting requests. To stop the server use ```Ctrl C``` while in this snapp terminal screen. Starting the webserver is done by running the snapp script with ```snapp```. This will create the snapp screen in the background and run the server. If you exit terminal at this stage the webserver remains running as it is now in "detached" mode. If you are uncertain if the webserver is running using ```screen -ls``` will reveal any screens running in the background and the one for the SNApp will be indicated by name. Lastly if you wish to detach from the snapp screen after entering into it and wish to leave it running on exit ```Ctrl A D``` will detach and leave the webserver running. Additional information on use of screen can be found on the man page here https://linux.die.net/man/1/screen. The server is not automatically set to start on boot therefore when you boot the pi you will be required to type ```snapp``` to start it. If you wish to have it start automatically every time on boot there are ways to do that through setting up a service or placing an entry in rc.local etc.
+nginx installs as a service. If you need to restart the service to host different content then you will need to restart nginx's service this can be done by using the following cli entry.
 
-## Selection of Ports
+```sudo systemctl restart nginx```
 
-The default port is set to ```80```. This value can be found and changed by editing the ```snapp``` script located in the /usr/local/bin directory i.e. stopping the webserver then ```sudo nano snapp``` ,changing the value found there from ```80``` to one of your choosing, saving it then restarting the script. If you change the port number ensure that you forward that port through your routers firewall as well. 80 typically will be an already open port.
+ensure when testing for changes you clear the browser cache to freshly reload the site.
 
 ## Support us
 
