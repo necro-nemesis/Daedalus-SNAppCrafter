@@ -29,7 +29,7 @@ Loki
  - [Preparing the image](#preparing-the-image)
  - [Accessing the device](#accessing-the-device)
  - [Quick installer](#quick-installer)
- - [Creating your unique Webserver (SNApp)](#creating-your-unique-webserver-(snapp))
+ - [Creating your unique SNApp](#creating-your-unique-snapp)
  - [Starting and Stopping the Webserver](#starting-and-stopping-the-webserver)
  - [Support us](#support-us)
  - [How to contribute](#how-to-contribute)
@@ -85,7 +85,7 @@ The installer will update, locate, install and configure all the prerequisites f
 
 At the end of the install process you will be presented with your Lokinet address. Either by starting the test server by answer "Y" or exiting the script "N" it will allow you to highlight the address and copy/paste this to clipboard or plug it directly into your browser to test your server. Remember to have Lokinet running on the computer you are using to test the site. Lokinet privately and anonymously only communicates with Lokinet.
 
-## Creating your unique Webserver (SNApp)
+## Creating your unique SNApp
 
 SNApps are placed in the /home/$USER/snapp directory "$USER" being substituted by the name of the user you created. The index.html file is there for initial testing. Either move it to another name or remove it and replace it with your own files. If you have a computer that can read the SD card partitions you can simply copy over your SNApp files to the folder on the sd card otherwise sftp into the PI and transfer the files you require. As shown in the image above you can use a program like FileZilla to sftp into the pi then navigate to the directory of the SNApp on your pc and the aforementioned SNApp directory on the pi then transfer the files to the pi.
 
