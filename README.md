@@ -26,11 +26,11 @@ Loki
 ## Contents
 
  - [Prerequisites](#prerequisites)
- - [Preparing the image](#preparing the image)
- - [Accessing the device](#accessing the device)
- - [Quick installer](#quick installer)
- - [Creating your unique Webserver (SNApp)](creating your unique webserver (snapp))
- - [Starting and Stopping the Webserver](starting and stopping the webserver)
+ - [Preparing the image](#preparing-the-image)
+ - [Accessing the device](#accessing-the-device)
+ - [Quick installer](#quick-installer)
+ - [Creating your unique Webserver (SNApp)](#creating-your-unique-webserver-(snapp))
+ - [Starting and Stopping the Webserver](#starting-and-stopping-the-webserver)
  - [Support us](#support-us)
  - [How to contribute](#how-to-contribute)
  - [License](#license)
