@@ -36,7 +36,7 @@ Loki
  - [License](#license)
 
 ## Prerequisites
-Start with a clean install of [Armbian](https://www.armbian.com/) or [Raspbian](https://www.raspberrypi.org/downloads/raspbian/) (currently Buster and Stretch are verified as working). Lite versions are recommended. If using Raspbian Buster elevate to root with ```sudo su``` before running the LokiAP installer script. For Armbian you will start already elevated to root on login so ```sudo su``` is not required.
+Start with a clean install of [Armbian](https://www.armbian.com/) or [Raspbian](https://www.raspberrypi.org/downloads/raspbian/) (currently Buster and Stretch are verified as working). Lite versions are recommended. If using Raspbian Buster elevate to root with ```sudo su``` before running the LabyrinthAP installer script. For Armbian you will start already elevated to root on login so ```sudo su``` is not required.
 
 For Orange Pi R1 use Armbian Buster found here: https://www.armbian.com/orange-pi-r1/. Recommend using "minimal" which is available for direct download at the bottom of the page or much faster download by .torrent also linked there.
 
