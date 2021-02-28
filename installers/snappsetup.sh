@@ -1,4 +1,4 @@
-UPDATE_URL="https://raw.githubusercontent.com/necro-nemesis/SNApp-Pi-Host/master/"
+UPDATE_URL="https://raw.githubusercontent.com/necro-nemesis/Daedalus-SNAppCrafter/master/"
 wget -q ${UPDATE_URL}/installers/common.sh -O /tmp/pihostcommon.sh
 source /tmp/pihostcommon.sh && rm -f /tmp/pihostcommon.sh
 
