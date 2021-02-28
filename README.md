@@ -1,7 +1,7 @@
 # Daedalus SNAppCrafter
 SNApp Setup Tool
 
-![](https://i.imgur.com/ywSbzAz.png)
+![](https://i.imgur.com/o1fLzMl.png)
 
 # `Daedalus SNAppCrafter` [![Release 1.1](https://img.shields.io/badge/Release-1.1-green.svg)](https://github.com/necro-nemesis/raspap-webgui/releases)
 
