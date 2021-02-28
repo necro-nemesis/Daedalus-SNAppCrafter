@@ -1,11 +1,11 @@
-# Daedalus
+# Daedalus SNAppCrafter
 SNApp Setup Tool
 
 ![](https://i.imgur.com/ywSbzAz.png)
 
-# `SNApp-PI-HOST` [![Release 1.1](https://img.shields.io/badge/Release-1.1-green.svg)](https://github.com/necro-nemesis/raspap-webgui/releases)
+# `Daedalus SNAppCrafter` [![Release 1.1](https://img.shields.io/badge/Release-1.1-green.svg)](https://github.com/necro-nemesis/raspap-webgui/releases)
 
-Lokinet SNApp-PI-HOST is an easy to use Lokinet webserver set up tool to rapidly configure a hidden service (SNApp) on a Raspberry Pi or Orange Pi. After installing a fresh image, running the script and entering your own user during the installation the device is ready to launch your website providing you with your individual Loki address.
+Daedalus SNAppCrafter is an easy to use Lokinet webserver set up tool to rapidly configure a hidden service (SNApp) on a Linux based system which supports .deb packages. After installing a fresh image, running the script and entering your own user during the installation the device is ready to launch your website providing you with your individual Loki address.
 
 ### WHAT IS LOKI?
 
@@ -17,7 +17,7 @@ Loki
 
 ![](https://i.imgur.com/fxKF4bi.jpg)
 
-![](https://i.imgur.com/dufI8PE.png)
+![](https://i.imgur.com/jIrnuEq.png)
 
 ![](https://i.imgur.com/bNggIs3.png)
 
