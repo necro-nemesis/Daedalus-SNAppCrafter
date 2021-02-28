@@ -162,7 +162,7 @@ function install_complete() {
 		exit 0 || install_error "Unable to exit"
 }
 
-function install_pihost() {
+function install_DaedalusHost() {
     display_welcome
     update_system_packages
     install_dependencies
