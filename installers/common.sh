@@ -25,18 +25,18 @@ fi
 
 }
 
-# Outputs a SNApp-Pi-Host Install log line
+# Outputs a DeadalusHost Install log line
 function install_log() {
     echo -e "\033[1;32mSNApp Install: $*\033[m"
 }
 
-# Outputs a SNApp-Pi-Host Install Error log line and exits with status code 1
+# Outputs a DeadalusHost Install Error log line and exits with status code 1
 function install_error() {
     echo -e "\033[1;37;41mSNApp Install Error: $*\033[m"
     exit 1
 }
 
-# Outputs a SNApp-Pi-Host Warning line
+# Outputs a DeadalusHost Warning line
 function install_warning() {
     echo -e "\033[1;33mAdvisory: $*\033[m"
 }
@@ -45,13 +45,17 @@ function install_warning() {
 function display_welcome() {
     raspberry='\033[0;35m'
     green='\033[1;32m'
+    cyan='\033[1;36m'
 
-    echo -e "${green}\n"
-    echo -e "  ___ _  _   _                 ___ ___    _  _  ___  ___ _____ "
-    echo -e " / __| \| | /_\  _ __ _ __ ___| _ \_ _|__| || |/ _ \/ __|_   _|"
-    echo -e " \__ \ .' |/ _ \| '_ \ '_ \___|  _/| |___| __ | (_) \__ \ | |"
-    echo -e " |___/_|\_/_/ \_\ .__/ .__/   |_| |___|  |_||_|\___/|___/ |_|"
-    echo -e "                 |_|  |_|"
+    echo -e "${cyan}\n"
+    echo -e "  ____                 _       _           _   _           _  "  
+    echo -e " |  _ \  __ _  ___  __| | __ _| |_   _ ___| | | | ___  ___| |_ "
+    echo -e " | | | |/ _` |/ _ \/ _` |/ _` | | | | / __| |_| |/ _ \/ __| __| "
+    echo -e " | |_| | (_| |  __/ (_| | (_| | | |_| \__ \  _  | (_) \__ \ |_ " 
+    echo -e " |____/ \__,_|\___|\__,_|\__,_|_|\__,_|___/_| |_|\___/|___/\__| "
+    echo -e " by Minotaurware.net "
+    echo -e "$(green)"
+    echo -e " SNApp setup tool for Linux based operating systems.
     echo -e "${raspberry}"
     echo -e "The Quick Installer will guide you through a few easy steps\n\n"
 }
@@ -76,7 +80,7 @@ function stop_lokinet(){
     sudo systemctl stop lokinet.service
 }
 
-# Verifies existence and permissions of snapp directory
+# Verifies existence and permissions of SNApp directory
 function create_webpage_directory() {
     install_log "Creating webpage directory"
     snapp_dir="/home/$username/snapp"
@@ -132,11 +136,20 @@ function install_complete() {
     sudo rm -r /tmp/snapp || install_error "Unable to remove /tmp/snapp folder"
 
 		#provide option to launch and display lokinet address
-		install_log "Installation completed!"
+		
+    cyan='\033[1;36m'		
+    echo -e "${cyan}\n"
+    echo -e "  ____                 _       _           _   _           _  "  
+    echo -e " |  _ \  __ _  ___  __| | __ _| |_   _ ___| | | | ___  ___| |_ "
+    echo -e " | | | |/ _` |/ _ \/ _` |/ _` | | | | / __| |_| |/ _ \/ __| __| "
+    echo -e " | |_| | (_| |  __/ (_| | (_| | | |_| \__ \  _  | (_) \__ \ |_ " 
+    echo -e " |____/ \__,_|\___|\__,_|\__,_|_|\__,_|___/_| |_|\___/|___/\__| "
+    echo -e " by Minotaurware.net "
+		install_log "DaedalusHost has completed your installation"
 		IP="127.3.2.1"
 		snapp_address=$(host -t cname localhost.loki $IP | awk '/alias for/ { print $6 }')
 		install_warning "Your Lokinet Address is:\nhttp://${snapp_address}"
-		install_warning "Place your snapp in ${snapp_dir}"
+		install_warning "Place your SNApp in ${snapp_dir}"
     echo -n "Do you wish to go live with test snapp? [y/N]: "
     read answer
     if [[ $answer != "y" ]]; then
