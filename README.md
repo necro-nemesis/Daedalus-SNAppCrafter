@@ -6,7 +6,7 @@ SNApp Setup Tool
 
 Daedalus SNAppCrafter is an easy to use Lokinet webserver set up tool to rapidly configure a hidden service (SNApp) on a Linux based system which support .deb packages. The installer can configure a hosted webserver for Lokinet using Nginx or can be used to create one on a local machine running Debian, Raspberry OS or Armbian. This allows anyone to host their own privacy website using Lokinet network. After installing a fresh image, running the script and following the installers instructions the device is ready to launch your website providing you with your individual Loki address.
 
-![](https://i.imgur.com/jIrnuEq.png)
+![](https://i.imgur.com/IVkovK4.png)
 
 ![](https://i.imgur.com/bNggIs3.png)
 
