@@ -25,18 +25,18 @@ fi
 
 }
 
-# Outputs a DeadalusHost Install log line
+# Outputs a Deadalus Install log line
 function install_log() {
     echo -e "\033[1;32mSNApp Install: $*\033[m"
 }
 
-# Outputs a DeadalusHost Install Error log line and exits with status code 1
+# Outputs a Deadalus Install Error log line and exits with status code 1
 function install_error() {
     echo -e "\033[1;37;41mSNApp Install Error: $*\033[m"
     exit 1
 }
 
-# Outputs a DeadalusHost Warning line
+# Outputs a Deadalus Warning line
 function install_warning() {
     echo -e "\033[1;33mAdvisory: $*\033[m"
 }
@@ -48,15 +48,22 @@ function display_welcome() {
     cyan='\033[1;36m'
 
     echo -e "${cyan}\n"
-    echo -e "  ____                 _       _           _   _           _  "  
-    echo -e " |  _ \  __ _  ___  __| | __ _| |_   _ ___| | | | ___  ___| |_ "
-    echo -e " | | | |/ _` |/ _ \/ _` |/ _` | | | | / __| |_| |/ _ \/ __| __| "
-    echo -e " | |_| | (_| |  __/ (_| | (_| | | |_| \__ \  _  | (_) \__ \ |_ " 
-    echo -e " |____/ \__,_|\___|\__,_|\__,_|_|\__,_|___/_| |_|\___/|___/\__| "
+    echo -e " ____                 _       _  "                                 
+    echo -e "|  _ \  __ _  ___  __| |_   _| |_   _  __ "                        
+    echo -e "| | | |/ _` |/ _ \/ _` | | | | | | | / __| "                       
+    echo -e "| |_| | (_| |  __/ (_| | |_| | | |_| \__ \ "                       
+    echo -e "|____/ \__,_|\___|\__,_|\__,_|_|\__,_|___/ "
+    echo -e "${raspberry}"
+    echo -e " ____  _   _    _                 ____            __ _ "           
+    echo -e "/ ___|| \ | |  / \   _ __  _ __  / ___|_ __ __ _ / _| |_ ___ _ __  "
+    echo -e "\___ \|  \| | / _ \ | '_ \| '_ \| |   | '__/ _` | |_| __/ _ \ '__| "
+    echo -e " ___) | |\  |/ ___ \| |_) | |_) | |___| | | (_| |  _| ||  __/ | "  
+    echo -e "|____/|_| \_/_/   \_\ .__/| .__/ \____|_|  \__,_|_|  \__\___|_| "   
+    echo -e "                    |_|   |_| TM"
+    echo -e "${cyan}\n"
     echo -e " by Minotaurware.net "
     echo -e "$(green)"
-    echo -e " SNApp setup tool for Linux based operating systems.
-    echo -e "${raspberry}"
+    echo -e " SNApp setup tool for Linux based operating systems."
     echo -e "The Quick Installer will guide you through a few easy steps\n\n"
 }
 
@@ -139,13 +146,13 @@ function install_complete() {
 		
     cyan='\033[1;36m'		
     echo -e "${cyan}\n"
-    echo -e "  ____                 _       _           _   _           _  "  
-    echo -e " |  _ \  __ _  ___  __| | __ _| |_   _ ___| | | | ___  ___| |_ "
-    echo -e " | | | |/ _` |/ _ \/ _` |/ _` | | | | / __| |_| |/ _ \/ __| __| "
-    echo -e " | |_| | (_| |  __/ (_| | (_| | | |_| \__ \  _  | (_) \__ \ |_ " 
-    echo -e " |____/ \__,_|\___|\__,_|\__,_|_|\__,_|___/_| |_|\___/|___/\__| "
+    echo -e "  ____                 _       _ "  
+    echo -e " |  _ \  __ _  ___  __| | __ _| |_   _  __ "
+    echo -e " | | | |/ _` |/ _ \/ _` |/ _` | | | | / __| "
+    echo -e " | |_| | (_| |  __/ (_| | (_| | | |_| \__ \ " 
+    echo -e " |____/ \__,_|\___|\__,_|\__,_|_|\__,_|___/ "
     echo -e " by Minotaurware.net "
-		install_log "DaedalusHost has completed your installation"
+		install_log "Daedalus has completed your installation"
 		IP="127.3.2.1"
 		snapp_address=$(host -t cname localhost.loki $IP | awk '/alias for/ { print $6 }')
 		install_warning "Your Lokinet Address is:\nhttp://${snapp_address}"
@@ -162,7 +169,7 @@ function install_complete() {
 		exit 0 || install_error "Unable to exit"
 }
 
-function install_DaedalusHost() {
+function install_Daedalus() {
     display_welcome
     update_system_packages
     install_dependencies
