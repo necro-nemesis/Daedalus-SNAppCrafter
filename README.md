@@ -4,17 +4,7 @@ SNApp Setup Tool
 
 # `Daedalus SNAppCrafter` [![Release 1.1](https://img.shields.io/badge/Release-1.1-green.svg)](https://github.com/necro-nemesis/raspap-webgui/releases)
 
-Daedalus SNAppCrafter is an easy to use Lokinet webserver set up tool to rapidly configure a hidden service (SNApp) on a Linux based system which supports .deb packages. After installing a fresh image, running the script and entering your own user during the installation the device is ready to launch your website providing you with your individual Loki address.
-
-### WHAT IS LOKI?
-
-https://loki.network/
-
-"Loki is a privacy network which will allow users to transact and communicate privately over the internet, providing a suite of tools to help maintain the maximum amount of anonymity possible while browsing, transacting and communication online. Using the decentralised nature of blockchain technology, Loki creates new private and secure methods of interacting with the internet, as well as building privacy-centric applications, such as messaging services, forums, online marketplaces, and social media platforms."
-
-Loki
-
-![](https://i.imgur.com/fxKF4bi.jpg)
+Daedalus SNAppCrafter is an easy to use Lokinet webserver set up tool to rapidly configure a hidden service (SNApp) on a Linux based system which support .deb packages. The installer can configure a hosted webserver for Lokinet using Nginx or can be used to create one on a local machine running Debian, Raspberry OS or Armbian. This allows anyone to host their own privacy website using Lokinet network. After installing a fresh image, running the script and following the installers instructions the device is ready to launch your website providing you with your individual Loki address.
 
 ![](https://i.imgur.com/jIrnuEq.png)
 
@@ -35,7 +25,12 @@ Loki
  - [License](#license)
 
 ## Prerequisites
-Start with a clean install of [Armbian](https://www.armbian.com/) or [Raspbian](https://www.raspberrypi.org/downloads/raspbian/) (currently Buster and Stretch are verified as working). Lite versions are recommended. If using Raspbian Buster elevate to root with ```sudo su``` before running the LabyrinthAP installer script. For Armbian you will start already elevated to root on login so ```sudo su``` is not required.
+
+Start with a fresh install of Debian on your system or server. Daedalus will install Nginx as a dependency to run the webserver. If you have already have Apache installed it will need it's service stopped or the Apache package removed. Be sure to back up any directories that may hold any previous websites before running the script as it will overwrite any previous files held in tradtional Linux served directories. It is possible to run SNApps using Apache but for simplicy of automating the install Nginx was chosen to be installed by Daedalus and used to host SNApps.
+
+### SBC (single board computer) Instructions
+
+Start with a clean install of [Armbian](https://www.armbian.com/) or [Raspbian](https://www.raspberrypi.org/downloads/raspbian/) (currently Buster and Stretch are verified as working). Lite versions are recommended. If using Raspbian Buster elevate to root with ```sudo su``` before running the Daedalus-SNAppCrafter installer script. For Armbian you will start already elevated to root on login so ```sudo su``` is not required.
 
 For Orange Pi R1 use Armbian Buster found here: https://www.armbian.com/orange-pi-r1/. Recommend using "minimal" which is available for direct download at the bottom of the page or much faster download by .torrent also linked there.
 
@@ -44,13 +39,13 @@ For OrangePi Zero use Armbian Buster found here": https://www.armbian.com/orange
 To burn the image to an SD card on your PC you can use Etcher:
 https://www.balena.io/etcher/
 
-## Preparing the image
+### Preparing the image
 
 For Raspbian you will need to remove the SD card from the computer, reinsert it, open the boot directory up and create a new textfile file named `ssh` with no .txt file extension i.e. just `ssh` in order to remotely connect. This step is not required for Armbian.
 
 Insert the SD card into the device and power it up.
 
-## Accessing the device
+### Accessing the device
 
 Obtain a copy of Putty and install it on your PC:
 https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html
@@ -76,7 +71,7 @@ With the prerequisites done, you can now proceed with the Quick installer.
 
 ## Quick installer
 
-Install SNApp-PI-HOST from shell prompt:
+Install Daedalus-SNAppCrafter from shell prompt:
 ```sh
 $ wget -q https://git.io/JepoL -O /tmp/snapp && bash /tmp/snapp
 ```
@@ -86,11 +81,11 @@ At the end of the install process you will be presented with your Lokinet addres
 
 ## Creating your unique SNApp
 
-SNApps are placed in the /home/$USER/snapp directory "$USER" being substituted by the name of the user you created. The index.html file is there for initial testing. Either move it to another name or remove it and replace it with your own files. If you have a computer that can read the SD card partitions you can simply copy over your SNApp files to the folder on the sd card otherwise sftp into the PI and transfer the files you require. As shown in the image above you can use a program like FileZilla to sftp into the pi then navigate to the directory of the SNApp on your pc and the aforementioned SNApp directory on the pi then transfer the files to the pi.
+SNApps are placed in the /home/$USER/snapp directory "$USER" being substituted by the name of the user you created. The index.html file is there for initial testing. Either move it to another name or remove it and replace it with your own files. If you are using an SBC to host and have a computer that can read the SD card partitions you can simply copy over your SNApp files to the folder on the sd card otherwise sftp into the server and transfer the files you require. As shown in the image above you can use a program like FileZilla to sftp in then navigate to the directory of the SNApp on your pc and the aforementioned SNApp directory on the server then transfer the files to the server.
 
 ## Starting and Stopping the Webserver
 
-nginx installs as a service. If you need to restart the service to host different content then you will need to restart nginx's service this can be done by using the following cli entry.
+Nginx installs as a service. If you need to restart the service to host different content then you will need to restart nginx's service this can be done by using the following cli entry.
 
 ```sudo systemctl restart nginx```
 
@@ -98,7 +93,7 @@ ensure when testing for changes you clear the browser cache to freshly reload th
 
 ## Support us
 
-SNApp-PI-HOST is free software, but powered by your support. If you find it beneficial or wish to contribute to inspire ongoing development your donations of any amount; be they even symbolic, are a show of approval and are greatly appreciated.
+Daedalus-SNAppCrafter is free software, but powered by your support. If you find it beneficial or wish to contribute to inspire ongoing development your donations of any amount; be they even symbolic, are a show of approval and are greatly appreciated.
 
 Loki Donation Address:
 ```sh
