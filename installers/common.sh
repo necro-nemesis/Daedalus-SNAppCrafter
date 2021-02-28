@@ -104,7 +104,7 @@ function download_latest_files() {
     fi
 
     install_log "Cloning latest files from github"
-    git clone --depth 1 https://github.com/necro-nemesis/SNapp-Pi-Host $snapp_dir || install_error "Unable to download files from github"
+    git clone --depth 1 https://github.com/necro-nemesis/Daedalus-SNAppCrafter $snapp_dir || install_error "Unable to download files from github"
 
 #handle changes to resolvconf giving nameserver 127.3.2.1 priority.
 		sudo systemctl stop resolvconf
