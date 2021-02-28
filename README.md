@@ -62,7 +62,7 @@ https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html
 
 3.  Follow any first user password instructions provided once logged in.
 
-4. If you want to get the lastest updates before installing SNApp-PI-HOST:
+4. If you want to get the lastest updates before installing Daedalus-SNAppCrafter:
 ```
 sudo apt-get update
 sudo apt-get upgrade
