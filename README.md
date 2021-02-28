@@ -1,4 +1,3 @@
-# Daedalus SNAppCrafter
 SNApp Setup Tool
 
 ![](https://i.imgur.com/o1fLzMl.png)
