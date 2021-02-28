@@ -17,4 +17,4 @@ function install_dependencies() {
     sudo yes | apt-get install git screen nginx dnsutils python3 resolvconf lokinet || install_error "Unable to install dependencies"
 }
 
-install_DaedalusHost
+install_Daedalus
