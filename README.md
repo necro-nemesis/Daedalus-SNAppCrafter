@@ -1,5 +1,5 @@
-# SNApp-PI-HOST
-Scripted SNApp hosting on a Pi
+# Daedalus
+SNApp Setup Tool
 
 ![](https://i.imgur.com/ywSbzAz.png)
 
