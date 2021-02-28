@@ -16,7 +16,7 @@ Daedalus SNAppCrafter is an easy to use Lokinet webserver set up tool to rapidly
 
  - [Prerequisites](#prerequisites)
  - [Preparing the image](#preparing-the-image)
- - [SBC (single board computer) Instructions](#sbc-(single-board-computer)-instructions)
+ - [SBC (single board computer) Instructions](#sbc-single-board-computer-instructions)
  - [Accessing the device](#accessing-the-device)
  - [Quick installer](#quick-installer)
  - [Creating your unique SNApp](#creating-your-unique-snapp)
