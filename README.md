@@ -8,7 +8,7 @@ Daedalus SNAppCrafter is an easy to use Lokinet webserver set up tool to rapidly
 
 ![](https://i.imgur.com/IVkovK4.png)
 
-![](https://i.imgur.com/bNggIs3.png)
+![](https://i.imgur.com/xnKPFd3.png)
 
 ![](https://i.imgur.com/KDYFjEu.png)
 
