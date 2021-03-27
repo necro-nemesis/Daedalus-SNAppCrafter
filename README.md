@@ -96,10 +96,12 @@ ensure when testing for changes you clear the browser cache to freshly reload th
 
 Daedalus-SNAppCrafter is free software, but powered by your support. If you find it beneficial or wish to contribute to inspire ongoing development your donations of any amount; be they even symbolic, are a show of approval and are greatly appreciated.
 
-Loki Donation Address:
+Oxen Donation Address:
 ```sh
 LA8VDcoJgiv2bSiVqyaT6hJ67LXbnQGpf9Uk3zh9ikUKPJUWeYbgsd9gxQ5ptM2hQNSsCaRETQ3GM9FLDe7BGqcm4ve69bh
 ```
+![](https://i.imgur.com/HGVuijh.jpg) ![](https://i.imgur.com/6dMgBVr.jpg) ![](https://i.imgur.com/gIhGB1X.jpg)
+
 ## How to contribute
 
 1. File an issue in the repository, using the bug tracker, describing the
