@@ -138,7 +138,7 @@ function install_complete() {
 
 		#clean out installer files
 		sudo rm -r $snapp_dir/installers || install_error "Unable to remove installers"
-    sudo rm -r /tmp/snapp || install_error "Unable to remove /tmp/snapp folder"
+		sudo rm -r /tmp/snapp || install_error "Unable to remove /tmp/snapp folder"
 
 		#provide option to launch and display lokinet address
 		
@@ -171,7 +171,7 @@ function install_Daedalus() {
     display_welcome
     update_system_packages
     install_dependencies
-		stop_lokinet
+    stop_lokinet
     create_user
     create_webpage_directory
     download_latest_files
