@@ -140,7 +140,7 @@ function install_complete() {
 		#remove "." from end of string
 		snapp_address=${snapp_address::-1}
 		#append server_name _ with snapp address in /etc/nginx/site-enable/default
-		sed -i 's/\(server_name _\)/\1''$snapp_address'/' /etc/nginx/sites-enabled/default
+		sed -i 's/server_name _/server_name _'$snapp_address'/' /etc/nginx/sites-enabled/default
 
 		#clean out installer files
 		sudo rm -r $snapp_dir/installers || install_error "Unable to remove installers"
