@@ -48,16 +48,16 @@ function display_welcome() {
     cyan='\033[1;36m'
 
     echo -e "${cyan}\n"
-    echo -e "  ____                 _       _ "          
+    echo -e "  ____                 _       _ "
     echo -e " |  _ \  __ _  ___  __| | __ _| |_   _ ___ "
     echo -e " | | | |/ _  |/ _ \/ _  |/ _  | | | | / __| "
     echo -e " | |_| | (_| |  __/ (_| | (_| | | |_| \__ \ "
     echo -e " |____/ \__,_|\___|\__,_|\__,_|_|\__,_|___/ "
-    echo -e "${raspberry}  ____  _   _    _                 ____            __ _  "           
+    echo -e "${raspberry}  ____  _   _    _                 ____            __ _  "
     echo -e " / ___|| \ | |  / \   _ __  _ __  / ___|_ __ __ _ / _| |_ ___ _ __  "
     echo -e " \___ \|  \| | / _ \ |  _ \|  _ \| |   |  __/ _  | |_| __/ _ \  __|  "
-    echo -e "  ___) | |\  |/ ___ \| |_) | |_) | |___| | | (_| |  _| ||  __/ |  "  
-    echo -e " |____/|_| \_/_/   \_\ .__/| .__/ \____|_|  \__,_|_|  \__\___|_|  "   
+    echo -e "  ___) | |\  |/ ___ \| |_) | |_) | |___| | | (_| |  _| ||  __/ |  "
+    echo -e " |____/|_| \_/_/   \_\ .__/| .__/ \____|_|  \__,_|_|  \__\___|_|  "
     echo -e "                     |_|   |_| TM  "
     echo -e "${cyan}by Minotaurware.net "
     echo -e "${green}\n"
@@ -135,24 +135,29 @@ function install_complete() {
 
 		#set nginx host directory to snapp_dir
 		sed -i 's#/var/www/html#'"$snapp_dir"'#g' /etc/nginx/sites-enabled/default
+		#obtain snapp address
+		snapp_address=$(host -t cname localhost.loki $IP | awk '/alias for/ { print $6 }')
+		#remove "." from end of string
+		snapp_address=${snapp_address::-1}
+		#append server_name _ with snapp address in /etc/nginx/site-enable/default
+		sed -i 's/\(server_name _\)/\1''$snapp_address'/' /etc/nginx/sites-enabled/default
 
 		#clean out installer files
 		sudo rm -r $snapp_dir/installers || install_error "Unable to remove installers"
 		sudo rm -r /tmp/snapp || install_error "Unable to remove /tmp/snapp folder"
 
 		#provide option to launch and display lokinet address
-		
-    cyan='\033[1;36m'		
+
+    cyan='\033[1;36m'
     echo -e "${cyan}\n"
-    echo -e "  ____                 _       _  "  
+    echo -e "  ____                 _       _  "
     echo -e " |  _ \  __ _  ___  __| | __ _| |_   _  __  "
     echo -e " | | | |/ _  |/ _ \/ _  |/ _  | | | | / __|  "
-    echo -e " | |_| | (_| |  __/ (_| | (_| | | |_| \__ \  " 
+    echo -e " | |_| | (_| |  __/ (_| | (_| | | |_| \__ \  "
     echo -e " |____/ \__,_|\___|\__,_|\__,_|_|\__,_|___/  "
     echo -e " by Minotaurware.net  "
 		install_log "Daedalus has completed your installation"
 		IP="127.3.2.1"
-		snapp_address=$(host -t cname localhost.loki $IP | awk '/alias for/ { print $6 }')
 		install_warning "Your Lokinet Address is:\nhttp://${snapp_address}"
 		install_warning "Place your SNApp in ${snapp_dir}"
     echo -n "Do you wish to go live with test snapp? [y/N]: "
